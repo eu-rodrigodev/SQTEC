@@ -25,7 +25,7 @@ namespace SqTec.Domain.Entities
             SetPontos(pontos);
 
             AddNotifications(new Contract()
-                .IsTrue(ValidateGuid(identificadorERP), "Customer.IdentificadorERP", "Identificador inválido")
+                .IsTrue(ValidateGuid(identificadorERP), "Cliente.IdentificadorERP", "Identificador inválido")
             );
 
             if (Valid)
@@ -36,8 +36,8 @@ namespace SqTec.Domain.Entities
         public void SetNome(string nome)
         {
             AddNotifications(new Contract()
-                .HasMinLen(nome, 2, "Customer.Nome", "Mínimo de 2 caracteres")
-                .HasMaxLen(nome, 60, "Customer.Nome", "Máximo de 60 caracteres")
+                .HasMinLen(nome, 2, "Cliente.Nome", "Mínimo de 2 caracteres")
+                .HasMaxLen(nome, 60, "Cliente.Nome", "Máximo de 60 caracteres")
             );
 
             Nome = nome;
@@ -46,7 +46,7 @@ namespace SqTec.Domain.Entities
         public void SetDataNascimento(DateTime dataNascimento)
         {
             AddNotifications(new Contract()
-                .IsLowerOrEqualsThan(dataNascimento, DateTime.Now.AddDays(-1), "Customer.DataNascimento", "O aniversário do cliente deve ser menor do que hoje")
+                .IsLowerOrEqualsThan(dataNascimento, DateTime.Now.AddDays(-1), "Cliente.DataNascimento", "O aniversário do cliente deve ser menor do que hoje")
             );
 
             DataNascimento = dataNascimento;
@@ -55,8 +55,8 @@ namespace SqTec.Domain.Entities
         public void SetRegiao(string regiao)
         {
             AddNotifications(new Contract()
-                .HasMinLen(regiao, 2, "Customer.Regiao", "A sigla do estado possui 2 caracteres")
-                .HasMaxLen(regiao, 2, "Customer.Regiao", "A sigla do estado possui 2 caracteres")
+                .HasMinLen(regiao, 2, "Cliente.Regiao", "A sigla do estado possui 2 caracteres")
+                .HasMaxLen(regiao, 2, "Cliente.Regiao", "A sigla do estado possui 2 caracteres")
             );
 
             Regiao = regiao;
@@ -65,7 +65,7 @@ namespace SqTec.Domain.Entities
         public void SetPontos(int pontos)
         {
             AddNotifications(new Contract()
-                .IsLowerThan(0, pontos, "Customer.Pontos", "Não deve ser menor que zero")
+                .IsLowerThan(0, pontos, "Cliente.Pontos", "Não deve ser menor que zero")
             );
 
             Pontos = pontos;

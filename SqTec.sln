@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqTec.Domain.Repositories",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqTec.Shared", "SqTec.Shared\SqTec.Shared.csproj", "{8178ADAF-069E-41DC-8217-945B6636225B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqtTec.Exceptions", "SqtTec.Exceptions\SqtTec.Exceptions.csproj", "{BD70A9EE-D0CF-4AD5-9417-CCC1ECB83AE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{8178ADAF-069E-41DC-8217-945B6636225B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8178ADAF-069E-41DC-8217-945B6636225B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8178ADAF-069E-41DC-8217-945B6636225B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD70A9EE-D0CF-4AD5-9417-CCC1ECB83AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD70A9EE-D0CF-4AD5-9417-CCC1ECB83AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD70A9EE-D0CF-4AD5-9417-CCC1ECB83AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD70A9EE-D0CF-4AD5-9417-CCC1ECB83AE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +105,7 @@ Global
 		{CD405CC0-C7B8-4A9B-8055-622F2F7119D3} = {9CC08A7F-085F-4AD4-A7C5-24E1A3262108}
 		{1BAE501B-E7AD-4A4A-A9DB-D8577B6354D3} = {06BD4B36-B525-4AAD-A72C-07E36BA15036}
 		{8178ADAF-069E-41DC-8217-945B6636225B} = {B5DD391E-D0C1-4455-934E-C83B09FFDC35}
+		{BD70A9EE-D0CF-4AD5-9417-CCC1ECB83AE5} = {B5DD391E-D0C1-4455-934E-C83B09FFDC35}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C407D230-9F76-4A78-BE06-E9E463DDF5D6}

@@ -6,6 +6,7 @@ using SqTec.Shared;
 using SqTec.Spec.Entities;
 using SqTec.Spec.Exceptions;
 using SqTec.Spec.Services;
+using SqtTec.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,10 +15,20 @@ using System.Text;
 
 namespace SqTec.Services.Cliente.Services
 {
+    /// <summary>
+    /// Classe de serviço de Clientes
+    /// </summary>
     public class ClienteService : IClienteService
     {
         #region props
+        /// <summary>
+        /// Lista de clientes
+        /// </summary>
         private List<Customer> Clientes;
+
+        /// <summary>
+        /// Lista de clientes backup caso o método Rollback() precise ser executado
+        /// </summary>
         private List<Customer> ClientesBkp;
         #endregion
 
@@ -39,7 +50,13 @@ namespace SqTec.Services.Cliente.Services
         {
             Customer obj = Clientes.Where(w => w.IdentificadorERP == cliente.IdentificadorERP).FirstOrDefault();
 
-            if (obj != null) obj = cliente as Customer;
+            if (obj != null)
+            {
+                obj.SetDataNascimento(cliente.DataNascimento);
+                obj.SetNome(cliente.Nome);
+                obj.SetPontos(cliente.Pontos);
+                obj.SetRegiao(cliente.Regiao);
+            }
         }
 
         public int CalcularIdade(ICliente cliente)
@@ -62,7 +79,7 @@ namespace SqTec.Services.Cliente.Services
         {
             Clientes.Add(cliente as Customer);
         }
-
+    
         public IEnumerable<ICliente> Listar()
         {
             return Clientes.ToList<ICliente>();
@@ -92,16 +109,19 @@ namespace SqTec.Services.Cliente.Services
 
                 try
                 {
-                    if (!DateTime.TryParse(sLinha[2], out dNascimento))
+                    if (string.IsNullOrWhiteSpace(linha) || sLinha.Where(w => string.IsNullOrWhiteSpace(w)).Any() )
                         throw new LinhaInvalidaException(linha);
 
+                    if (!DateTime.TryParse(sLinha[2], out dNascimento))
+                        throw new ParseIncorretoException("Data de nascimento", sLinha[2]);
+
                     if (!int.TryParse(sLinha[4], out iPontos))
-                        throw new LinhaInvalidaException(linha);
+                        throw new ParseIncorretoException("Quantidade de pontos", sLinha[4]);
 
                     cliente = new Customer(sLinha[0], sLinha[1], dNascimento, sLinha[3], Convert.ToInt32(sLinha[4]));
 
                     if (cliente.Invalid)
-                        throw new LinhaInvalidaException(linha);
+                        throw new NotifiableException(cliente.Errors());
 
                     ClientesTxt.Add(cliente);
                 }

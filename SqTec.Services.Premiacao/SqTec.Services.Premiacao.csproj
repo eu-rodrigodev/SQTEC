@@ -47,5 +47,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PremiacaoService.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SqTec.Services.Cliente\SqTec.Services.Cliente.csproj">
+      <Project>{56218D4A-0DCF-4DF0-8414-7F3A6A766E69}</Project>
+      <Name>SqTec.Services.Cliente</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

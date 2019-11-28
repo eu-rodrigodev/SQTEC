@@ -1,30 +1,39 @@
-﻿using SqTec.Spec.Entities;
+﻿using SqTec.Services.Cliente.Services;
+using SqTec.Spec.Entities;
 using SqTec.Spec.Services;
 
 namespace SqTec.Services.Premiacao.Services
 {
     public class PremiacaoService : IPremiacaoService
     {
-        public PremiacaoService() { }
-
-        public double CalcularDesconto(ICliente cliente)
-        {
-            return 1;
-        }
-
-        public int CalcularMedalhasBronze(ICliente cliente)
-        {
-            return 1;
-        }
-
         public int CalcularMedalhasOuro(ICliente cliente)
         {
-            return 1;
+            return cliente.Pontos / 10000;
         }
 
         public int CalcularMedalhasPrata(ICliente cliente)
         {
-            return 1;
+            return (cliente.Pontos - (CalcularMedalhasOuro(cliente) * 10000)) / 1000;
+        }
+
+        public int CalcularMedalhasBronze(ICliente cliente)
+        {
+            return (cliente.Pontos - (CalcularMedalhasOuro(cliente) * 10000) - (CalcularMedalhasPrata(cliente) * 1000)) / 100;
+        }
+
+        public double CalcularDesconto(ICliente cliente)
+        {
+            var ouro = CalcularMedalhasOuro(cliente);
+            var metade = ouro / 2;
+            var idade = new ClienteService().CalcularIdade(cliente);
+            var retorno = ((Fatorial(ouro) / (Fatorial(metade) * Fatorial(ouro - metade))) + (2 * idade)) / 100.00;
+
+            return retorno > 30 ? 30 : retorno;
+        }
+
+        private long Fatorial(int n)
+        {
+            return n <= 1 ? 1 : n * Fatorial(n - 1);
         }
     }
 }
