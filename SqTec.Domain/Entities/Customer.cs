@@ -5,6 +5,9 @@ using System;
 
 namespace SqTec.Domain.Entities
 {
+    /// <summary>
+    /// Classe de domínio de Cliente
+    /// </summary>
     public class Customer : Entity, ICliente
     {
         public Guid IdentificadorERP { get; private set; }

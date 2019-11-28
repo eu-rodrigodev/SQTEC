@@ -8,6 +8,9 @@ using System.Text;
 
 namespace SqTec.Services.Log.Services
 {
+    /// <summary>
+    /// Classe de serviço de Log de erros
+    /// </summary>
     public class LogService : ILogService
     {
         public void Log(string mensagem)

@@ -4,6 +4,9 @@ using SqTec.Spec.Services;
 
 namespace SqTec.Services.Premiacao.Services
 {
+    /// <summary>
+    /// Classe de serviço de Premiação, calculos por faixa de prêmio e desconto
+    /// </summary>
     public class PremiacaoService : IPremiacaoService
     {
         public int CalcularMedalhasOuro(ICliente cliente)
@@ -31,9 +34,11 @@ namespace SqTec.Services.Premiacao.Services
             return retorno > 30 ? 30 : retorno;
         }
 
+        #region private methods
         private long Fatorial(int n)
         {
             return n <= 1 ? 1 : n * Fatorial(n - 1);
         }
+        #endregion
     }
 }

@@ -48,5 +48,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ConfigService.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SqtTec.Exceptions\SqtTec.Exceptions.csproj">
+      <Project>{BD70A9EE-D0CF-4AD5-9417-CCC1ECB83AE5}</Project>
+      <Name>SqtTec.Exceptions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
