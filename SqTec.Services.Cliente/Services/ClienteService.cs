@@ -79,7 +79,7 @@ namespace SqTec.Services.Cliente.Services
         {
             Clientes.Add(cliente as Customer);
         }
-    
+
         public IEnumerable<ICliente> Listar()
         {
             return Clientes.ToList<ICliente>();
@@ -109,7 +109,7 @@ namespace SqTec.Services.Cliente.Services
 
                 try
                 {
-                    if (string.IsNullOrWhiteSpace(linha) || sLinha.Where(w => string.IsNullOrWhiteSpace(w)).Any() )
+                    if (string.IsNullOrWhiteSpace(linha) || sLinha.Where(w => string.IsNullOrWhiteSpace(w)).Any())
                         throw new LinhaInvalidaException(linha);
 
                     if (!DateTime.TryParse(sLinha[2], out dNascimento))

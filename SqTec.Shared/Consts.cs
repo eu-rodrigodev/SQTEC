@@ -1,5 +1,8 @@
 ﻿namespace SqTec.Shared
 {
+    /// <summary>
+    /// Classe de Constants
+    /// </summary>
     public static class Consts
     {
         public const string CaminhoArquivoClientes = nameof(CaminhoArquivoClientes);

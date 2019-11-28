@@ -27,7 +27,6 @@ namespace SqTec.Services.Config.Services
             {
                 throw new ParseIncorretoException("ConfigService.ObterConfiguracao");
             }
-            
         }
     }
 }

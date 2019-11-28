@@ -13,8 +13,15 @@ using System.Text;
 
 namespace SqTec.Domain.Repositories.Cliente
 {
+    /// <summary>
+    /// Classe de repositório de Cliente
+    /// </summary>
     public class ClienteRepository : IClienteRepository
     {
+        /// <summary>
+        /// Retorna lista de todos os clientes armazenados no arquivo JSon da solução
+        /// </summary>
+        /// <returns></returns>
         public List<Customer> GetLista()
         {
             var caminhoJson = new ConfigService().ObterConfiguracao<string>(Consts.CaminhoArquivoDados);
@@ -33,6 +40,9 @@ namespace SqTec.Domain.Repositories.Cliente
             }
         }
 
+        /// <summary>
+        /// Grava lista de clientes no arquivo JSon da solução
+        /// </summary>
         public void Salvar(List<Customer> entities)
         {
             var path = new ConfigService().ObterConfiguracao<string>(Consts.CaminhoArquivoDados);

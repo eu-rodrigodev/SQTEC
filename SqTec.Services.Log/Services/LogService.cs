@@ -16,7 +16,7 @@ namespace SqTec.Services.Log.Services
         public void Log(string mensagem)
         {
             var pathArquivoLog = new ConfigService().ObterConfiguracao<string>(Consts.CaminhoArquivoLog);
-            
+
             using (var sw = new StreamWriter(pathArquivoLog, true, Encoding.Unicode))
             {
                 sw.WriteLine(string.Format("{0} | {1}", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"), mensagem.Replace(Environment.NewLine, " ")));
